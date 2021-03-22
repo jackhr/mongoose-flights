@@ -20,10 +20,18 @@
     <br>
     <div>Departure: </div>
     <div><%= flight.departs %></div>
+    <br>
+    <% flight.destinations.forEach(function(f) { %>
+    <div>Additional Destinations: </div>
+    <div><%= f.airport %></div>
+    <div>Arrival Time: </div>
+    <div><%= f.arrival %></div>
+    <br>
+    <% }); %>
   </section>
   <h2>Add More Stuffs</h2>
   <form id="add-review-form" method="POST"
-  action="/movies/<%= flight._id %>"> <!-- fix this -->
+  action="/flights/<%= flight._id %>/destinations"> <!-- fix this -->
   <label>Destination:
     <select name="airport">
       <option value="AUS">AUS</option>
