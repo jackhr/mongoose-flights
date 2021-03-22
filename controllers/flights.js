@@ -49,5 +49,14 @@ function create(req, res) {
 // }
 
 function newFlight(req, res) {
-  res.render('flights/new');
+  const newFlight = new Flight();
+  // Obtain the default date
+  const dt = newFlight.departs;
+  console.log(dt);
+  // Formats the date for the value attribute of the input
+  const departsDate = dt.toISOString().slice(0, 16).split('-');
+  departsDate[0] = '2022';
+  const defaultDate = departsDate.join('-');
+  console.log(departsDate);
+  res.render('flights/new', { defaultDate });
 }
