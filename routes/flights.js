@@ -4,10 +4,10 @@ const flightsCtrl = require('../controllers/flights.js');
 
 // GET /flights
 router.get('/', flightsCtrl.index);
-// // GET /flights/:id
-// router.get('/:id', flightsCtrl.show);
 // GET /movies/new
 router.get('/new', flightsCtrl.new);
+// // GET /flights/:id
+router.get('/:id', flightsCtrl.show);
 // POST /flights
 router.post('/', flightsCtrl.create);
 // // PUT /flights/:id
