@@ -9,7 +9,9 @@ const destinationSchema = new Schema({
   arrival: {
     type: Date,
     default: function() {
-      return new Date().getFullYear() + 1;
+      let oneYearFromNow = new Date();
+      return oneYearFromNow.setFullYear(oneYearFromNow.getFullYear());
+      // return new Date().getFullYear() + 1;
     },
   },
 });
