@@ -1,4 +1,6 @@
 const Flight = require('../models/flight');
+const Ticket = require('../models/ticket');
+
 
 module.exports = {
   index,
@@ -16,19 +18,16 @@ function index(req, res) {
   });
 }
 
-// function index(req, res) {
-//   Flight.find ({}).sort({departs: "ascending"}).exec(function(err,flights) {
-//       res.render('flights/index', { flights });
-//   });
-// }
-
 function show(req, res) {
   Flight.findById(req.params.id, function(err, flight) {
-    if (err) console.log(err);
+    Ticket.find({flight: flight._id}, function(err, tickets) {
+      if (err) console.log(err);
       const dt = flight.departs;
       const departsDate = dt.toISOString().slice(0, 16);
-      res.render('flights/show', { flight, departsDate })
-  })
+      tickets.flight = req.params.id;
+      res.render('flights/show', {flight, tickets, departsDate});
+    });
+  });
 }
 
 

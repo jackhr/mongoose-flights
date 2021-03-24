@@ -8,6 +8,26 @@
   <title>Mongoose Flights</title>
 </head>
 <body>
+  <h2>New <a href="/flights/<%= flight._id %>/tickets/new/">Ticket</a></h2>
+  <h2>Add Destinations</h2>
+  <form method="POST"
+  action="/flights/<%= flight._id %>/destinations">
+  <label>Destination:
+    <select name="airport">
+      <option value="AUS">AUS</option>
+      <option value="DEN">DEN</option>
+      <option value="DFW">DFW</option>
+      <option value="LAX">LAX</option>
+      <option value="SAN">SAN</option>
+    </select>
+  </label>
+  <br>
+  <label>Date:
+    <input type="datetime-local" name="arrival" value="<%= departsDate %>">
+  </label>
+  <input type="submit" value="Add Stuffs">
+</form>
+<br>
   <section>
     <div>Flight#: </div>
     <div><%= flight.flightNo %></div>
@@ -28,24 +48,14 @@
     <div><%= f.arrival %></div>
     <br>
     <% }); %>
+    <div>Tickets:</div>
+    <% tickets.forEach(function(t) { %>
+    <div>Seat:</div>
+    <div><%= t.seat %></div>
+    <div><%= t.price %></div>
+    <div><%= t.flight %></div>
+    <br>
+    <% }); %>
   </section>
-  <h2>Add More Stuffs</h2>
-  <form id="add-review-form" method="POST"
-  action="/flights/<%= flight._id %>/destinations"> <!-- fix this -->
-  <label>Destination:
-    <select name="airport">
-      <option value="AUS">AUS</option>
-      <option value="DEN">DEN</option>
-      <option value="DFW">DFW</option>
-      <option value="LAX">LAX</option>
-      <option value="SAN">SAN</option>
-    </select>
-  </label>
-  <br>
-  <label>Date:
-    <input type="datetime-local" name="arrival" value="<%= departsDate %>">
-  </label>
-  <input type="submit" value="Add Stuffs">
-</form>
 </body>
 </html>
