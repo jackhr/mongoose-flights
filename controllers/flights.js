@@ -7,8 +7,8 @@ module.exports = {
   show,
   new: newFlight,
   create,
+  delete: deleteFlight
   // update,
-  // delete: deleteFlight
 };
 
 function index(req, res) {
@@ -48,17 +48,16 @@ function create(req, res) {
 //   })
 // }
 
-// function deleteFlight(req, res) {
-//   Flight.findOneAndDelete(req.params.id, function(err, deletedFlight) {
-//     if (err) console.log(err);
-//     res.redirect('/flights');
-//   })
-// }
+function deleteFlight(req, res) {
+  Flight.findOneAndDelete(req.params.id, function(err, deletedFlight) {
+    if (err) console.log(err);
+    res.redirect('/flights');
+  })
+}
 
 function newFlight(req, res) {
   const newFlight = new Flight();
   // Obtain the default date
-  console.log(newFlight);
   const dt = newFlight.departs;
   // Formats the date for the value attribute of the input
   const departsDate = dt.toISOString().slice(0, 16).split('-');

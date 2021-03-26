@@ -7,21 +7,28 @@
   <title>Mongoose Flights</title>
   <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
-<body>
-  <a href="../">Home</a>
-  <br><br>
-  <a href="/flights">Go back</a>
+<body id="tickets-new-body">
+  <nav>
+    <div>
+      <a href="/">Home</a>
+      <a href="/flights">Go back</a>
+    </div>
+  </nav>
   <br>
-  <h1>Mongoose Flights</h1>
-  <h2>Enter a New Ticket</h2>
-  <form action="/flights/<%= flightId %>/tickets" method="POST">
-    <label>Seat:
-      <input name="seat" type="text" required pattern="[A-F][1-9]\d?">
-    </label>
-    <label>Name a Price!
-      <input name="price" type="number">
-    </label>
-    <input type="submit" value="Ticket you say?">
-  </form>
+  <div class="out">
+    <div class="in">
+      <h1>Mongoose Flights</h1>
+      <h2>Enter a New Ticket</h2>
+      <form action="/flights/<%= flightId %>/tickets" method="POST">
+        <label>Seat:
+          <input name="seat" type="text" required pattern="[A-F][1-9]\d?">
+        </label>
+        <label>Name a Price!
+          <input name="price" type="number">
+        </label>
+        <input type="submit" value="Ticket you say?">
+      </form>
+    </div>
+  </div>
 </body>
 </html>

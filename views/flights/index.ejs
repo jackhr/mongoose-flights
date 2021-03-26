@@ -7,16 +7,19 @@
   <link rel='stylesheet' href='/stylesheets/style.css' />
   <title>Mongoose Flights</title>
 </head>
-<body>
-  <a href="../">Home</a>
+<body id="flights-index-body">
+  <nav id ="flights-index-nav">
+    <a href="../">Home</a>
+  </nav>
   <br><br>
-  <table>
+  <table id="index-table">
     <thead>
       <tr>
         <th>Flight #</th>
         <th>Airline</th>
         <th>Airport</th>
         <th>Departure</th>
+        <th></th>
         <th></th>
       </tr>
     </thead>
@@ -28,10 +31,15 @@
           <td><%= f.airport %></td>
           <td><%= f.departs %></td>
           <td><a href="flights/<%= f._id %>">Details</a></td>
+          <td>
+            <form action="/flights/<%= f._id %>?_method=DELETE" method="POST">
+              <button type="submit">X</button>
+            </form>
+          </td>
         </tr>
       <% }); %>
     </tbody>
   </table>
-  <p>Add a <a href="/flights/new">Flight</a></p>
+  <p id="add-flight">Add a <a href="/flights/new">Flight</a></p>
 </body>
 </html>

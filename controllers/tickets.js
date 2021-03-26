@@ -7,7 +7,6 @@ module.exports = {
 };
 
 function newTicket(req, res) {
-  console.log('req.poar')
   const flightId = req.params.id;
   res.render(`tickets/new`, { flightId });
 }
